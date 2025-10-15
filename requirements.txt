@@ -1,3 +1,4 @@
 xnat
 pydicom<3.0
 LinkedDicom
+rdflib
