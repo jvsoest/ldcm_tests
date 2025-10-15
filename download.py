@@ -13,3 +13,10 @@ for subject in project.subjects:
             os.makedirs(f'./data/{subject.label}/{experiment.label}', exist_ok=True)
             # Download the scan to the specified directory
             scan.download(f'./data/{subject.label}/{experiment.label}/{scan.uid}')
+            
+            # unzip the downloaded file
+            import zipfile
+            with zipfile.ZipFile(f'./data/{subject.label}/{experiment.label}/{scan.uid}', 'r') as zip_ref:
+                zip_ref.extractall(f'./data/{subject.label}/{experiment.label}/')
+            # remove the zip file after extraction
+            os.remove(f'./data/{subject.label}/{experiment.label}/{scan.uid}')
