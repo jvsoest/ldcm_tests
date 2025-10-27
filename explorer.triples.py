@@ -8,19 +8,22 @@ import csv
 
 def main():
     data_dir = './data'
+    filename = 'LinkedDicom.ttl'
     results = []
 
     for subject_label in os.listdir(data_dir):
         subject_path = os.path.join(data_dir, subject_label)
         if os.path.isdir(subject_path):
-            for filename in os.listdir(subject_path):
-                if filename.endswith('.ttl'):
-                    file_path = os.path.join(subject_path, filename)
-                    g = rdflib.Graph()
-                    g.parse(file_path, format='turtle')
+            file_path = os.path.join(subject_path, filename)
+            if os.path.exists(file_path):
+                g = rdflib.Graph()
+                g.parse(file_path, format='turtle')
+                
                 num_triples = len(g)
                 file_size = os.path.getsize(file_path) / 1024  # size in KB
-                results.append((subject_label, num_triples, file_size))
+                # deduplicate; do not add if the same result is already in the dataset
+                if (subject_label, num_triples, file_size) not in results:
+                    results.append((subject_label, num_triples, file_size))
 
     # Write results to CSV
     with open('data_triples_analysis.csv', 'w', newline='') as csvfile:
