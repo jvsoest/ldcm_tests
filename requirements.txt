@@ -2,3 +2,6 @@ xnat
 pydicom<3.0
 LinkedDicom
 rdflib
+pandas
+scikit-learn
+numpy
