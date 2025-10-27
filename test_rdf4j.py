@@ -35,23 +35,30 @@ def create_repository():
         print("Attempting to load data anyway...")
 
 def load_data():
+    time_start = time.time()
+
     # Define the RDF4J repository URL
     rdf4j_url = "http://localhost:8080/rdf4j-server/repositories/ldcm_native/statements"
     
     # Iterate over all files in the ./data directory
     for filename in os.listdir("./data"):
-        print(f"Found file: {filename}")
+        # print(f"Found file: {filename}")
         ttl_file_path = os.path.join("./data", filename, "LinkedDicom.ttl")
         if os.path.isfile(ttl_file_path):
-            print(f"Loading {filename} into RDF4J...")
+            # print(f"Loading {filename} into RDF4J...")
             # Load the TTL file into the RDF4J repository
             with open(ttl_file_path, "rb") as f:
                 headers = {"Content-Type": "text/turtle"}
                 response = requests.post(rdf4j_url, headers=headers, data=f)
                 if response.status_code == 204:
-                    print(f"Successfully loaded {filename} into RDF4J")
+                    # print(f"Successfully loaded {filename} into RDF4J")
+                    continue
                 else:
                     print(f"Failed to load {filename} into RDF4J: {response.content}")
+    
+    time_end = time.time()
+    elapsed_time = time_end - time_start
+    print(f"Elapsed time for loading data into RDF4J: {elapsed_time} seconds")
 
 # read query from file
 with open('query.sparql', 'r') as f:
@@ -67,6 +74,11 @@ def run_query():
     elapsed_time = end_time - start_time
     print(f"Elapsed time for SPARQL query: {elapsed_time} seconds")
     
+    del end_time
+    del start_time
+    del elapsed_time
+
+    start_time = time.time()
     #store results in a csv file
     with open('./data_analysis_results_rdf4j.csv', 'w') as results_file:
         results_file.write('patient,study,rtStruct,structureName,ctSerie,ctSerieModality,ctSerieDesc,ctSerieManufacturerModelName\n')
@@ -86,6 +98,9 @@ def run_query():
                 results_file.write(','.join(row) + '\n')
         else:
             print(f"Failed to execute SPARQL query: {response.status_code} - {response.content}")
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time for writing results to CSV: {elapsed_time} seconds")
 
 def main():
     create_repository()
