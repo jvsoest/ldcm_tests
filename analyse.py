@@ -47,8 +47,7 @@ def main():
             #print(f'Elapsed time for {subject_label}: {elapsed_time} seconds')
 
             # write results to csv
-            for row in results:
-                csv_file.write(f'{subject_label},{elapsed_time}\n')
+            csv_file.write(f'{subject_label},{elapsed_time}\n')
 
     csv_file.close()
 
