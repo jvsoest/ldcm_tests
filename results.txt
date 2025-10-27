@@ -1,0 +1,166 @@
+(venv) johan@work-laptop ➜ ldcm_tests git:(main) ✗ bash run_tests.sh
+1d879c078928bd5e9ea8a36f86a3289396e8ec6c8860a5b4d7b5dacb82b18606
+Waiting 10 seconds for RDF4J to start...
+=================================================
+RDF4J test on data folder
+Creates data_analysis_results_rdf4j.csv
+=================================================
+Successfully created RDF4J repository 'ldcm_native'
+Elapsed time for loading data into RDF4J: 3.121608257293701 seconds
+Elapsed time for SPARQL query: 0.3162193298339844 seconds
+Elapsed time for writing results to CSV: 0.0064890384674072266 seconds
+        Command being timed: "python test_rdf4j.py"
+        User time (seconds): 0.25
+        System time (seconds): 0.04
+        Percent of CPU this job got: 7%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.80
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 32120
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 6424
+        Voluntary context switches: 140
+        Involuntary context switches: 2
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 872
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+rdf4j
+rdf4j-data
+
+=================================================
+RDFLib test on data folder (loading per-patient)
+Creates data_analysis_times.csv and data_analysis_results.csv
+=================================================
+        Command being timed: "python analyse.py"
+        User time (seconds): 5.85
+        System time (seconds): 0.32
+        Percent of CPU this job got: 97%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.32
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 51756
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 66705
+        Voluntary context switches: 1
+        Involuntary context switches: 330
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 952
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+=================================================
+RDFLib test on data folder (loading all patients at once, capped at 1 patient)
+Creates data_analysis_results_once.csv
+=================================================
+================================================
+Loaded 1 patient(s)
+Elapsed time for loading data: 0.03790998458862305 seconds
+Elapsed time for running query: 0.07539010047912598 seconds
+Elapsed time for writing results to CSV: 0.005545616149902344 seconds
+Number of rows in results: 14
+        Command being timed: "python analyse_once.py 1"
+        User time (seconds): 0.18
+        System time (seconds): 0.01
+        Percent of CPU this job got: 90%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.22
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 37016
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 7918
+        Voluntary context switches: 1
+        Involuntary context switches: 4
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 16
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+=================================================
+RDFLib test on data folder (loading all patients at once, capped at 2 patients)
+Creates data_analysis_results_once.csv
+=================================================
+================================================
+Loaded 2 patient(s)
+Elapsed time for loading data: 0.04925704002380371 seconds
+Elapsed time for running query: 0.07600903511047363 seconds
+Elapsed time for writing results to CSV: 1.7797586917877197 seconds
+Number of rows in results: 20
+        Command being timed: "python analyse_once.py 2"
+        User time (seconds): 1.81
+        System time (seconds): 0.01
+        Percent of CPU this job got: 90%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.00
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 37976
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 8165
+        Voluntary context switches: 1
+        Involuntary context switches: 4
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 16
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+
+=================================================
+RDFLib test on data folder (loading all patients at once, capped at 3 patients)
+Creates data_analysis_results_once.csv
+=================================================
+================================================
+Loaded 3 patient(s)
+Elapsed time for loading data: 0.0815119743347168 seconds
+Elapsed time for running query: 0.07836174964904785 seconds
+Elapsed time for writing results to CSV: 186.75514197349548 seconds
+Number of rows in results: 31
+        Command being timed: "python analyse_once.py 3"
+        User time (seconds): 187.30
+        System time (seconds): 0.03
+        Percent of CPU this job got: 100%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 3:07.03
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 39808
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 8550
+        Voluntary context switches: 1
+        Involuntary context switches: 347
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 24
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
